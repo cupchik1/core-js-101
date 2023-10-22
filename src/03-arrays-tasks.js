@@ -378,8 +378,9 @@ function getItemsSum(arr) {
  *  [ -1, 'false', null, 0 ] => 2
  *  [ null, undefined, NaN, false, 0, '' ]  => 6
  */
-function getFalsyValuesCount(/* arr */) {
-  throw new Error('Not implemented');
+function getFalsyValuesCount(arr) {
+  const falsyValues = arr.filter((value) => !value);
+  return falsyValues.length;
 }
 
 /**
@@ -411,8 +412,8 @@ function findAllOccurrences(/* arr, item */) {
  *    [1, 2, 3, 4, 5]                   => '1,2,3,4,5'
  *    ['rock', 'paper', 'scissors']     => 'rock,paper,scissors'
  */
-function toStringList(/* arr */) {
-  throw new Error('Not implemented');
+function toStringList(arr) {
+  return arr.join(',');
 }
 
 
@@ -442,8 +443,23 @@ function toStringList(/* arr */) {
  *      { country: 'Russia',  city: 'Saint Petersburg' }
  *    ]
  */
-function sortCitiesArray(/* arr */) {
-  throw new Error('Not implemented');
+function sortCitiesArray(arr) {
+  arr.sort((a, b) => {
+    const countryA = a.country.toUpperCase();
+    const countryB = b.country.toUpperCase();
+    const cityA = a.city.toUpperCase();
+    const cityB = b.city.toUpperCase();
+    if (countryA < countryB) {
+      return -1;
+    }
+    if (countryA > countryB) { return 1; }
+    if (cityA < cityB) {
+      return -1;
+    }
+    if (cityA > cityB) { return 1; }
+    return 0;
+  });
+  return arr;
 }
 
 /**
@@ -482,6 +498,9 @@ function getIdentityMatrix(/* n */) {
  *     3, 3   => [ 3 ]
  */
 function getIntervalArray(/* start, end */) {
+  // const arr = new Array(end - start + 1);
+  // arr.fill(0);
+  // arr.map((x) => )
   throw new Error('Not implemented');
 }
 
@@ -496,8 +515,8 @@ function getIntervalArray(/* start, end */) {
  *   [ 'a', 'a', 'a', 'a' ]  => [ 'a' ]
  *   [ 1, 1, 2, 2, 3, 3, 4, 4] => [ 1, 2, 3, 4]
  */
-function distinct(/* arr */) {
-  throw new Error('Not implemented');
+function distinct(arr) {
+  return Array(...new Set(arr));
 }
 
 /**
@@ -549,6 +568,7 @@ function group(/* array, keySelector, valueSelector */) {
  *   ['one','two','three'], (x) => x.split('')  =>   ['o','n','e','t','w','o','t','h','r','e','e']
  */
 function selectMany(/* arr, childrenSelector */) {
+  // return arr.map(childrenSelector);
   throw new Error('Not implemented');
 }
 
